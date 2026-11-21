@@ -1,0 +1,38 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "frontend",
+        "run",
+        "dev"
+      ],
+      "port": 5173
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "backend",
+        "run",
+        "dev"
+      ],
+      "port": 4000
+    },
+    {
+      "name": "backend-memory",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "backend",
+        "run",
+        "dev:memory"
+      ],
+      "port": 4000
+    }
+  ]
+}

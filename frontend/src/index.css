@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+ * Pak China Cargo design tokens.
+ * Palette is taken from the logo: navy wordmark, container blue, signal red, gold arrow.
+ */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  /* Archivo, set wide and heavy: the blocky lettering of shipping-container markings. */
+  --font-display: "Archivo Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-urdu: "Noto Nastaliq Urdu", serif;
+
+  --color-navy-50: #eef3f9;
+  --color-navy-100: #d6e2f0;
+  --color-navy-200: #aec4df;
+  --color-navy-300: #7f9fc7;
+  --color-navy-400: #5683bb;
+  --color-navy-500: #2f6fb0;
+  --color-navy-600: #245a92;
+  --color-navy-700: #1b4a7a;
+  --color-navy-800: #153c64;
+  --color-navy-900: #102f50;
+  --color-navy-950: #0a1f37;
+
+  --color-gold-100: #fdf1d3;
+  --color-gold-300: #f8d27a;
+  --color-gold-400: #f5c04a;
+  --color-gold-500: #f2b02a;
+  --color-gold-600: #d6930f;
+
+  --color-signal-500: #d9363e;
+  --color-signal-600: #bd2a32;
+
+  --color-ink: #0f1b2b;
+  --color-surface: #eef2f6;
+  --color-line: #e3e8ef;
+
+  --radius-card: 0.75rem;
+
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-navy-900;
+    font-stretch: 112%;
+  }
+  /* Small headings read better at the normal width. */
+  h3, h4 {
+    font-stretch: 100%;
+  }
+  ::selection {
+    @apply bg-gold-300 text-navy-950;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold-500;
+  }
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+/* Wide display cut, for big numbers and labels set in the display face outside headings. */
+@utility font-wide {
+  font-family: var(--font-display);
+  font-stretch: 118%;
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility urdu {
+  font-family: var(--font-urdu);
+  direction: rtl;
+  line-height: 2.1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
