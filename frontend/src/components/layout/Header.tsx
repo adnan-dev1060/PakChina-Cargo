@@ -43,6 +43,9 @@ export function Header() {
   const { pathname } = useLocation();
   // The menu is "open for a given page", so navigating anywhere closes it without an effect.
   const [openOn, setOpenOn] = useState<string | null>(null);
+  // Forget the page as soon as we leave it. Otherwise, coming back to that page later
+  // (e.g. tapping the logo to return home) would open the menu again by itself.
+  if (openOn !== null && openOn !== pathname) setOpenOn(null);
   const open = openOn === pathname;
   const [scrolled, setScrolled] = useState(false);
   const { primaryPhone, whatsapp } = useContactLinks();
